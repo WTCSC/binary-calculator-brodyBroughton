@@ -33,11 +33,11 @@ To install and run the binary calculator, follow these steps:
 
 1. Clone the repository:
     ```
-    git clone https://github.com/yourusername/binary-calculator.git
+    git clone https://github.com/WTCSC/binary-calculator-brodyBroughton.git
     ```
 2. Navigate to the project directory:
     ```
-    cd binary-calculator
+    cd binary-calculator-brodyBroughton
     ```
 3. Run the Python script:
     ```
