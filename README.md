@@ -48,10 +48,8 @@ To install and run the binary calculator, follow these steps:
 
 To use the binary calculator, follow these steps:
 
-1. Uncomment the print statement on line 68
+1. Uncomment the print statement on line 46
 2. Enter the first binary number in the print statement
 3. Enter the second binary number in the print statement
 4. Enter the operation you want to perform (+, -, *, /).
 5. Run the program!
-
-P.S. You can enter a binary less than 8 digits and it will adjust automatically, but if you enter a binary bigger than 8 digits it will error
