@@ -1,42 +1,43 @@
 def binary_calculator(bin1, bin2, operator):
     
     # Checks if there's only 0s and 1s
-    for l in bin1:
-        for k in bin2:
-            if l != "0" and l != "1":
-                return "Error"
-            if k != "0" and k != "1":
-                return "Error"
+    if all(char in '01' for char in bin1):
+        pass
+    else:
+        return "Error"
+    
+    if all(char in '01' for char in bin2):
+        pass
+    else:
+        return "Error"
     
     # Convert binary to 8 digits if less than 8 already
     if len(bin1) < 8:
-        for i in range(8 - len(bin1)):
-            bin1 = "0" + bin1
+        bin1 = bin1.zfill(8)
+        
     if len(bin2) < 8:
-        for j in range(8 - len(bin2)):
-            bin2 = "0" + bin2
+        bin2 = bin2.zfill(8)
+
+    # Checks if the binary is larger than 8 digits
+    if len(bin1) > 8:
+        return "Error"
+    
+    if len(bin2) > 8:
+        return "Error"
 
     # Converting binary to decimal
-    bin1powers = []
-    bin2powers = []
-    # This loops through the binary string, and when there is a 1, it takes that index, and subtracts it from 7 to get the value to put to the power of 2, then adds it to the appropriate list
-    # For example, if the second index is 1, then 7 - 2 = 5, so 2^5 = 32
-    for index, value in enumerate(bin1):
-        if value == "1":
-            bin1powers.append(7 - index)
-    for index, value in enumerate(bin2):
-        if value == "1":
-            bin2powers.append(7 - index)
-    
-    # Turn bin1 and bin2 into decimal
     bin1decimal = 0
-    for i in bin1powers:
-        bin1decimal += 2**i
     bin2decimal = 0
-    for j in bin2powers:
-        bin2decimal += 2**j
 
-    # Performs the operation, as well as checking for overflow and NaN
+    # Iterates through the binary string, and if the value is 1, then add 2 to the power of the index to the decimal value
+    for index, (value1, value2) in enumerate(zip(bin1, bin2)):
+        if value1 == "1":
+            bin1decimal += 2 ** (7 - index)
+
+        if value2 == "1":
+            bin2decimal += 2 ** (7 - index)
+
+    # Performs operations, Overflow and NaN checks
     if operator == "+":
         result = bin1decimal + bin2decimal
     elif operator == "-":
@@ -62,3 +63,6 @@ def binary_calculator(bin1, bin2, operator):
             result = result % num
         
     return finalResult
+
+# Print statement for users who want to use the calculator :)
+# print(binary_calculator("xxxxxxxx", "xxxxxxxx", "x"))
